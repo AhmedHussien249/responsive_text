@@ -1,5 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_text/responsive_text.dart';
 
 void main() {
   runApp(
@@ -38,19 +39,23 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Responsive Text Example'),
       ),
-      body:  Padding(
+      body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-             Text(
+            Text(
               'title Text',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: MediaQuery.of(context).size.width * 0.02,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: getResponsiveFontSize(context, fontSize: 20),
+              ),
             ),
-            ), const SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               'this is the body text it should be responsive',
-              style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.01),
+              style: TextStyle(
+                  fontSize: getResponsiveFontSize(context, fontSize: 16)),
             ),
             const SizedBox(height: 10),
           ],
@@ -59,3 +64,8 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
+// scale factor
+// responsive font size
+// (min,max) font size
+
